@@ -24,13 +24,12 @@ trait ResponseTrait
     {
         return response()->json(
             [
-                'status' => true,
-                'data' => $data,
-                'error' => [
-                    'code' => $code,
-                    'message' => $message,
-                ],
-            ]
+                'status'  => true,
+                'code'    => $code,
+                'data'    => $data,
+                'message' => $message,
+            ],
+            $code
         );
     }
 
@@ -38,10 +37,10 @@ trait ResponseTrait
      * Response error structure.
      *
      * @param $message
-     * @param int $status
+     * @param int $code
      * @return JsonResponse
      */
-    protected function error($message, $status = Response::HTTP_BAD_REQUEST)
+    protected function error($message, $code = Response::HTTP_BAD_REQUEST)
     {
         $decode = is_string($message) ? json_decode($message) : '';
         if ($decode) {
@@ -50,14 +49,12 @@ trait ResponseTrait
 
         return response()->json(
             [
-                'status' => false,
-                'data' => null,
-                'error' => [
-                    'code' => $status,
-                    'message' => $message,
-                ],
+                'status'  => false,
+                'code'    => $code,
+                'data'    => null,
+                'message' => $message,
             ],
-            $status
+            $code
         );
     }
 
