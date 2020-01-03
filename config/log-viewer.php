@@ -1,7 +1,5 @@
 <?php
 
-use Arcanedev\LogViewer\Contracts\Utilities\Filesystem;
-
 return [
 
     /* -----------------------------------------------------------------
@@ -17,9 +15,9 @@ return [
      */
 
     'pattern'       => [
-        'prefix'    => Filesystem::PATTERN_PREFIX,    // 'laravel-'
-        'date'      => Filesystem::PATTERN_DATE,      // '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
-        'extension' => Filesystem::PATTERN_EXTENSION, // '.log'
+        'prefix'    => 'laravel-',    // 'laravel-'
+        'date'      => '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]',      // '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
+        'extension' => '.log', // '.log'
     ],
 
     /* -----------------------------------------------------------------
@@ -51,9 +49,9 @@ return [
         'enabled'    => true,
 
         'attributes' => [
-            'prefix'     => 'log-viewer',
+            'prefix'     => 'logs',
 
-            'middleware' => env('ARCANEDEV_LOGVIEWER_MIDDLEWARE') ? explode(',', env('ARCANEDEV_LOGVIEWER_MIDDLEWARE')) : null,
+            'middleware' => env('ARCANEDEV_LOGVIEWER_MIDDLEWARE') ? explode(',', env('ARCANEDEV_LOGVIEWER_MIDDLEWARE')) : ['auth.basic.logs'],
         ],
     ],
 
