@@ -11,6 +11,7 @@
         "php": "^7.2",
         "ext-json": "^1.6",
         "arcanedev/log-viewer": "^5.1",
+        "darkaonline/l5-swagger": "^6.0",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.5",
         "laravel/framework": "^6.2",
